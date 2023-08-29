@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textview_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/etName"
+        android:layout_marginTop="50dp"/>
+    <Button
+        android:id="@+id/btnUserHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Home"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btnScanQr"
+        android:layout_marginTop="20dp"/>
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btnUserHome"
+        android:layout_marginTop="20dp"/>
+    <Button
+        android:id="@+id/btnScanQr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scan Qr"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btnGetParcelList"
+        android:layout_marginTop="50dp"/>
+    <Button
+        android:id="@+id/btnAddParcel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Parcel"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btnSubmit"
+        android:layout_marginTop="0dp"/>
+
+    <Button
+        android:id="@+id/btnGetParcelList"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Parcel List"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btnSubmit"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_below="@id/textview_first"
+
+        android:text="Name"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

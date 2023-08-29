@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/parcelpalbluedark"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ViewParcelListItem"
+
+    android:fitsSystemWindows="true"
+   >
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="678dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="55dp"
+        android:fitsSystemWindows="true"
+        android:isScrollContainer="true"
+        tools:ignore="NotSibling,UselessParent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/Linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+                <ImageButton
+                    android:id="@+id/logo"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:backgroundTint="@color/parcelpalbluedark"
+                    android:src="@mipmap/ic_launcher_parcelpal_background"
+                    android:scaleType="fitXY"
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/parcelinfotxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/logo"
+                    android:layout_weight="1"
+                    android:text="Parcel Information"
+              android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/viewMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_toRightOf="@id/parcelinfotxt"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/ic_baseline_more_vert_24"></ImageView>
+
+
+
+                <!--        <Button-->
+                <!--            android:id="@+id/save_button"-->
+                <!--            android:layout_width="wrap_content"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:text="Save"-->
+                <!--            android:enabled="false" />-->
+
+            </RelativeLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rounded_square"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+
+                app:cardUseCompatPadding="true"
+                android:backgroundTint="@color/white">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    >
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Linear"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:isScrollContainer="false"
+                    android:fitsSystemWindows="true"
+                    android:layout_marginBottom="50dp"
+                    tools:ignore="NestedScrolling,NotSibling">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutInner"
+                        >
+
+                        <!-- Parcel ID -->
+                        <TextView
+                            android:id="@+id/product_name_edittext1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Product Name"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+
+                        <TextView
+                            android:id="@+id/tracking_id_edittext1"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/product_name_edittext"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="0dp"
+                            android:backgroundTint="@color/gray"
+                            android:hint="Tracking ID"
+
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+
+                        <TextView
+                            android:backgroundTint="@color/gray"
+
+                            android:id="@+id/order_total_edittext1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/order_id_edittext"
+                            android:layout_marginTop="20dp"
+                            android:hint="Order Total"
+                            android:inputType="numberDecimal"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+                        <TextView
+                            android:id="@+id/tvPaymentMeth1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/order_total_edittext"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@color/gray"
+                            android:text="Payment Method"/>
+                        <TextView
+                            android:id="@+id/tv_compartment1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvPaymentMeth"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@color/gray"
+                            android:text="Compartment"/>
+                        <TextView
+                            android:backgroundTint="@color/gray"
+                            android:id="@+id/order_id_edittext1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tracking_id_edittext"
+                            android:layout_marginTop="20dp"
+                            android:hint="Order ID"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+                        <TextView
+                            android:id="@+id/tvDeliveryStatus1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_compartment"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@color/gray"
+                            android:text="Delivery Status"/>
+
+                        <TextView
+                            android:id="@+id/textView_DateReceived1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvDeliveryStatus"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@color/gray"
+                            android:text="Date Received"/>
+                        <TextView
+                            android:id="@+id/textView_Proofpay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/textView_DateReceived"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@color/gray"
+                            android:text="Proof of Payment:"/>
+
+<!--00000000000000000000000000000000000000000000000000-->
+
+                        <TextView
+                            android:id="@+id/product_name_edittext"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                           android:text="ProductName"
+                            android:padding="8dp"
+                            android:textColor="@color/black"
+                            android:layout_toRightOf="@id/product_name_edittext1"/>
+
+                        <TextView
+                            android:id="@+id/tracking_id_edittext"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/tracking_id_edittext1"
+                            android:layout_below="@id/product_name_edittext"
+                            android:layout_marginTop="20dp"
+                            android:padding="8dp"
+                            android:layout_marginEnd="0dp"
+                            android:text="Tracking ID"
+                            android:textColor="@color/black"
+                            />
+
+                        <TextView
+                            android:id="@+id/order_total_edittext"
+                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/order_total_edittext1"
+                            android:layout_below="@id/order_id_edittext"
+                            android:layout_marginTop="20dp"
+                            android:text="Order Total"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+                        <TextView
+                            android:id="@+id/tvPaymentMeth"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/tvPaymentMeth1"
+                            android:layout_below="@id/order_total_edittext"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@color/black"
+                            android:text="Payment Method"/>
+                        <TextView
+                            android:id="@+id/tv_compartment"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvPaymentMeth"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_toEndOf="@id/tv_compartment1"
+                            android:textColor="@color/black"
+                            android:text="Compartment"/>
+                        <TextView
+                            android:id="@+id/order_id_edittext"
+
+                            android:backgroundTint="@color/gray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tracking_id_edittext"
+                            android:layout_marginTop="20dp"
+                            android:text="Order ID"
+                            android:layout_toRightOf="@id/order_id_edittext1"
+                            android:textColor="@color/black"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+                        <TextView
+                            android:id="@+id/tvDeliveryStatus"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_compartment"
+                            android:layout_marginStart="8dp"
+                            android:layout_toRightOf="@+id/tvDeliveryStatus1"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@color/black"
+                            android:text="Delivery Status"></TextView>
+
+                        <TextView                            android:id="@+id/textView_DateReceived"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvDeliveryStatus"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_toEndOf="@id/textView_DateReceived1"
+                            android:textColor="@color/black"
+                            android:text="Date Received"></TextView>
+
+
+                    </RelativeLayout>
+
+                </ScrollView>
+    <ImageView
+        android:id="@+id/iv_uphoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="0dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+    <TextView
+        android:id="@+id/txtUploadNone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_uphoto"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="No Proof of Payment Uploaded">
+    </TextView>
+</RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:background="@drawable/roundedlist"
+                android:backgroundTint="@color/lightmidgreen"           android:id="@+id/btnPayMobile"
+                android:layout_marginTop="30dp"
+
+                android:text="Pay Mobile"
+                android:layout_gravity="center"
+                android:textColor="@color/white">
+            </Button>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

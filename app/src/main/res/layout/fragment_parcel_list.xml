@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ParcelListFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="205dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/etParcelSearch"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/roundedlist"
+        android:backgroundTint="@color/darkmidblue"
+
+        android:hint="  Search Parcel"
+        android:textColorHint="@color/gray">
+
+    </EditText>
+
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_toRightOf="@+id/etParcelSearch"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/ic_baseline_search_24"
+        android:backgroundTint="@color/lightmidgreen"
+        android:text="Search"
+        android:textSize="10dp">
+
+    </ImageView>
+
+    <RelativeLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etParcelSearch"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp">
+
+        <RadioGroup
+            android:id="@+id/radiogrp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/lightmidgreen">
+
+            <RadioButton
+                android:id="@+id/rball"
+                android:layout_width="120dp"
+                android:checked="true"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/radio_selector"
+                android:button="@color/zxing_transparent"
+
+                android:padding="10dp"
+                android:text="All"
+
+                android:textAlignment="center"
+                android:textColor="@drawable/text_color_selector"
+
+                >
+
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/rbpending"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_selector"
+
+
+                android:button="@color/zxing_transparent"
+                android:padding="10dp"
+                android:text="Pending"
+                android:textAlignment="center"
+                android:textColor="@drawable/text_color_selector">
+
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/rbcomplete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_selector"
+
+                android:button="@color/zxing_transparent"
+
+                android:padding="10dp"
+                android:text="Received"
+
+                android:textAlignment="center"
+                android:textColor="@drawable/text_color_selector">
+
+            </RadioButton>
+        </RadioGroup>
+    </RelativeLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/linear">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RecyclerView_ParcelList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linear"
+                tools:itemCount="10">
+                <!--        tools:listitem="@layout/recyclerview_parcel_list"-->
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1076734107891",
+    "project_id": "parcelpal-user",
+    "storage_bucket": "parcelpal-user.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076734107891:android:4dc28e9f4e5ba9b384d786",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076734107891-ln9n70ni6ih0ofghsh3g864m4uek09js.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClruiJDqjifX1L4NzyxHSb-Ucmn_kQt7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076734107891-ln9n70ni6ih0ofghsh3g864m4uek09js.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076734107891:android:8f897edfdd83174684d786",
+        "android_client_info": {
+          "package_name": "com.example.parcelpaluser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076734107891-ln9n70ni6ih0ofghsh3g864m4uek09js.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClruiJDqjifX1L4NzyxHSb-Ucmn_kQt7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076734107891-ln9n70ni6ih0ofghsh3g864m4uek09js.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

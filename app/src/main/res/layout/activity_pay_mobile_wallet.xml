@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".PayMobileWallet"
+    android:layout_marginTop="10dp"
+    android:fitsSystemWindows="true"
+    android:backgroundTint="@color/parcelpalbluelight">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <!--    <ScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"></ScrollView>-->
+    <!-- Header -->
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="678dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="55dp"
+        android:fitsSystemWindows="true"
+        android:isScrollContainer="true"
+        tools:ignore="NotSibling">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/Linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+                <ImageButton
+                    android:id="@+id/back_button"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:backgroundTint="@color/parcelpalbluelight"
+                    android:src="@mipmap/ic_launcher_parcelpal_background"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="Pay via Mobile Wallet"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <!--        <Button-->
+                <!--            android:id="@+id/save_button"-->
+                <!--            android:layout_width="wrap_content"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:text="Save"-->
+                <!--            android:enabled="false" />-->
+
+            </LinearLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/scrollView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Linear"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rounded_square"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                android:backgroundTint="@color/white">
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Linear"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:isScrollContainer="false"
+                    android:fitsSystemWindows="true"
+
+                    tools:ignore="NotSibling">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+                        <!-- Parcel ID -->
+                        <EditText
+                            android:id="@+id/product_name_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Product Name"
+                            android:inputType="text"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:backgroundTint="@color/gray"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+                        <!-- Tracking ID -->
+                        <!-- Order Total -->
+                        <EditText
+                            android:id="@+id/tracking_id_edittext"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/product_name_edittext"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="0dp"
+                            android:backgroundTint="@color/gray"
+                            android:hint="Tracking ID"
+                            android:inputType="text"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+                        <EditText
+                            android:backgroundTint="@color/gray"
+
+                            android:id="@+id/walletType_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tracking_id_edittext"
+                            android:layout_marginTop="20dp"
+                            android:hint="Mobile Wallet Type"
+                            android:inputType="text"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+                        <EditText
+                            android:backgroundTint="@color/gray"
+
+                            android:id="@+id/order_total_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/walletType_et"
+                            android:layout_marginTop="20dp"
+                            android:hint="Order Total"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+
+                        <EditText
+                            android:backgroundTint="@color/gray"
+
+                            android:id="@+id/courierName_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/order_total_edittext"
+                            android:layout_marginTop="20dp"
+                            android:hint="Courier Name"
+                            android:inputType="text"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+                        <EditText
+                            android:backgroundTint="@color/gray"
+
+                            android:id="@+id/courierAccNum_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/courierName_et"
+                            android:layout_marginTop="20dp"
+                            android:hint="Courier Account Number"
+                            android:inputType="text"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+                        <TextView
+                            android:id="@+id/tvUploadProof"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/courierAccNum_et"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/gray"
+                            android:text="Upload Proof of Payment"></TextView>
+
+                        <ImageView
+                            android:id="@+id/iv_uphoto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvUploadProof"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            app:srcCompat="@mipmap/ic_launcher" />
+
+                    </RelativeLayout>
+
+                </ScrollView>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btnUpload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/scrollView"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/darkgray"
+
+                android:text="Upload Proof of Payment"
+                android:textColor="@color/white">
+
+            </Button>
+            <Button
+                android:id="@+id/btnSendToDb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnUpload"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/darkgray"
+
+                android:text="Send Proof of Payment"
+                android:textColor="@color/white">
+
+            </Button>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

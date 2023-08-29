@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".AccountFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="212dp"
+        android:background="@color/parcelpalbluedark"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/white"
+
+            android:src="@drawable/ic_baseline_account_circle_24">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/fullname_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+
+            android:layout_toRightOf="@+id/profile_image"
+            android:includeFontPadding="false"
+            android:text="Taimoor Sikander"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/username_field"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fullname_field"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/profile_image"
+            android:includeFontPadding="false"
+            android:text="taimoor_sikander"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="-100dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:padding="20dp">-->
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:layout_height="110dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            app:cardCornerRadius="20dp"-->
+
+<!--            android:backgroundTint="@color/darkmidblue"-->
+<!--            android:cardElevation="10dp">-->
+<!--            <RelativeLayout-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:padding="5dp"-->
+
+<!--                >-->
+<!--                <ImageView-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:src="@drawable/parcelbox" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/payment_label"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textColor="@color/white"-->
+
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:includeFontPadding="false"-->
+<!--                    android:text="$123"-->
+<!--                    android:textSize="20sp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/payment_desc"-->
+<!--                    android:layout_width="wrap_content"-->
+
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/payment_label"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:includeFontPadding="false"-->
+<!--                    android:text="Parcels"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="20sp" />-->
+<!--            </RelativeLayout>-->
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+<!--</LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="492dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_user"
+            android:drawablePadding="10dp"
+            android:hint="Full Name"
+            android:textColorHint="@color/gray"></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/gray"
+            android:drawableLeft="@drawable/ic_outline_email_24"
+            android:drawablePadding="10dp"
+            android:hint="Email">
+
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:textColorHint="@color/gray"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_outline_phone_24"
+            android:drawablePadding="10dp"
+            android:hint="Phone Number">
+
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:textColorHint="@color/gray"
+            android:layout_height="wrap_content"
+
+            android:drawableLeft="@drawable/ic_baseline_password_24"
+            android:drawablePadding="10dp"
+            android:hint="Password">
+
+        </EditText>
+
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/roundedlist"
+            android:backgroundTint="@color/lightmidgreen"
+            android:text="UPDATE" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="300dp"
+
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/roundedlist"
+            android:backgroundTint="@color/lightmidgreen"
+            android:text="LogOut" />
+
+    </LinearLayout>
+
+</LinearLayout>
+    <!-- TODO: Update blank fragment layout -->
+<!--<TextView-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:text="@string/hello_blank_fragment" />-->
+

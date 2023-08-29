@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".addParcelItem">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ScrollView>
+<!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:id="@+id/Linear">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add Parcel Information"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+<!--        <Button-->
+<!--            android:id="@+id/save_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Save"-->
+<!--            android:enabled="false" />-->
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/Linear"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+    <!-- Parcel ID -->
+    <EditText
+        android:id="@+id/parcel_id_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Parcel ID"
+        android:inputType="number"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="@color/gray" />
+
+    <!-- Tracking ID -->
+    <EditText
+        android:id="@+id/tracking_id_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Tracking ID"
+        android:inputType="text"
+        android:layout_below="@id/parcel_id_edittext"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="@color/gray" />
+
+    <!-- User ID -->
+    <EditText
+        android:id="@+id/user_id_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="User ID"
+        android:inputType="number"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:layout_below="@id/tracking_id_edittext"
+        android:padding="8dp"
+        android:textColorHint="@color/gray" />
+
+    <!-- Order Total -->
+    <EditText
+        android:id="@+id/order_total_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Order Total"
+        android:inputType="numberDecimal"
+        android:maxLength="10"
+        android:layout_below="@id/user_id_edittext"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="@color/gray" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Payment Method"
+        android:id="@+id/tvPaymentMeth"
+        android:layout_below="@id/order_total_edittext"
+        android:layout_marginStart="8dp"
+        ></TextView>
+
+    <!-- Payment Type ID -->
+    <RadioGroup
+        android:id="@+id/payment_type_radio_group"
+        android:layout_width="match_parent"
+        android:layout_below="@id/tvPaymentMeth"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RadioButton
+            android:id="@+id/prepaid_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prepaid" />
+
+        <RadioButton
+            android:id="@+id/cod_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cash on Delivery" />
+
+        <RadioButton
+            android:id="@+id/wallet_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile Wallet" />
+
+    </RadioGroup>
+
+    <!-- Courier ID -->
+    <EditText
+        android:id="@+id/courier_id_edittext"
+        android:layout_width="match_parent"
+        android:layout_below="@id/payment_type_radio_group"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Courier ID"
+        android:inputType="text"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="@color/gray" />
+
+    <!-- Product Name -->
+    <EditText
+        android:id="@+id/product_name_edittext"
+        android:layout_width="match_parent"
+        android:layout_below="@id/courier_id_edittext"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Product Name"
+        android:inputType="text"
+        android:maxLength="50"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="@color/gray" />
+
+    <!-- Delivery Status -->
+    <EditText
+        android:id="@+id/delivery_status_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Delivery Status"
+        android:layout_below="@id/product_name_edittext"
+        android:inputType="text"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="@color/gray" />
+
+    <!-- Order ID -->
+    <EditText
+        android:id="@+id/order_id_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/delivery_status_edittext"
+        android:layout_marginTop="8dp"
+        android:hint="Order ID"
+        android:inputType="number"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:textColorHint="@color/gray" />
+
+    <!-- Date Received -->
+    <EditText
+        android:id="@+id/date_received_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/order_id_edittext"
+        android:hint="Date Received"
+        android:inputType="date"
+        android:padding="8dp"
+        android:textColorHint="@color/gray" />
+
+    <!-- Save Snackbar -->
+    <Button
+    android:id="@+id/btnAddParcel"
+        android:layout_width="match_parent"
+    android:layout_below="@id/date_received_edittext"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/teal_200"
+        android:text="Add Parcel">
+
+    </Button>
+    </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/layout_add_parcel"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".addParcelItem">-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/title_add_parcel"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Add Parcel"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edittext_parcel_id"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/title_add_parcel"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:hint="Parcel ID" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edittext_tracking_id"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/edittext_parcel_id"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:hint="Tracking ID" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edittext_user_id"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/edittext_tracking_id"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:hint="User ID" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edittext_order_total"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/edittext_user_id"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:hint="Order Total" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edittext_payment_type_id"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/edittext_order_total"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:hint="Payment Type ID" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edittext_courier_id"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/edittext_payment_type_id"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:hint="Courier ID" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edittext_product_name"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/edittext_courier_id"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:hint="Product Name" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edittext_delivery_status"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/edittext_product_name"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:hint="Delivery Status" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edittext_order_id"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/edittext_delivery_status"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:hint="Order ID" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edittext_date_received"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/edittext_order_id"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:hint="Date Received" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/button_add_parcel"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/edittext_date_received"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:text="Add Parcel" />-->
+
+<!--</RelativeLayout>-->

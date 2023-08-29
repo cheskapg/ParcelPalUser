@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="25dp">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+
+        >
+
+        <ImageView
+            android:id="@+id/imageView_ParcelItem"
+            android:layout_width="51dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/parcelbox" />
+        <RelativeLayout
+            android:id="@+id/rvstatusleft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imageView_ParcelItem">
+
+            <TextView
+                android:id="@+id/tvparcel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Parcel Name:"
+
+                android:textColor="@color/darkmidblue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <RelativeLayout
+                android:id="@+id/textData"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_below="@+id/tvparcel">
+
+                <TextView
+                    android:id="@+id/textView_UserId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="User ID"
+                    android:textColor="@color/darkmidblue"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/textView_ParcelId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Parcel ID"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/textView_OrderId1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Order ID"
+                    android:textStyle="bold"
+                    android:textColor="@color/darkmidblue"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/textView_TrackingId1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_OrderId1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Tracking ID"                    android:textStyle="bold"
+
+                    android:textColor="@color/darkmidblue"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView_OrderTotal1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_TrackingId1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Order Total"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/darkmidblue"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/textView_CourierId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_OrderTotal1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Courier ID"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/statusRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textData"
+                android:layout_marginLeft="20dp"
+                >
+
+                <TextView
+                    android:id="@+id/textView_ProductName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="Status"
+                    android:textColor="@color/darkmidblue"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView_OrderId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Delivery Status"
+                    android:layout_below="@id/textView_ProductName"
+                    android:textColor="@color/darkmidblue"
+
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView_DateReceived"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date Received"
+                    android:textColor="@color/darkmidblue"
+                    android:layout_marginBottom="5dp"
+android:visibility="gone"
+                    android:textSize="16sp"
+                    android:layout_below="@id/textView_OrderId"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="8dp"
+                    />
+                <TextView
+                    android:id="@+id/textView_TrackingId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_DateReceived"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+
+                    android:text="Payment Type"
+                    android:textColor="@color/darkmidblue"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/tvPhp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_TrackingId"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="PHP"
+
+                    android:textColor="@color/darkmidblue"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/textView_OrderTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_TrackingId"
+                    android:layout_toRightOf="@id/tvPhp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="8dp"
+
+                    android:text="Compartment"
+                    android:textColor="@color/darkmidblue"
+
+                    android:textSize="14sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/iconright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                >
+                <ImageView
+                    android:id="@+id/imgArrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/black"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp"
+            >
+
+
+
+            <ImageView
+                android:id="@+id/btnEditParcel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_baseline_edit_24"
+                android:text="Edit" />
+
+            <ImageView
+                android:id="@+id/btnDeleteParcel"
+                android:visibility="gone"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnEditParcel"
+                android:layout_alignParentEnd="true"
+                android:text="Delete"
+                android:src="@drawable/ic_baseline_delete_24"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnPayMobile"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="99dp"
+
+            android:text="Pay Online"
+            android:textSize="13dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+  >
+
+
+    <item android:title="Add Parcel"
+        android:icon="@drawable/ic_baseline_add_box_24"
+        app:itemBackground="@color/black"
+        app:itemIconTint="@color/selector_menu_color"
+        app:itemTextColor="@color/selector_menu_color"
+        android:iconTint="@color/black"
+        android:id="@+id/addParcelMenu"/>
+    <item android:title="Parcel List"
+        android:icon="@drawable/ic_baseline_content_paste_24"
+        android:id="@+id/parcelListMenu"
+        app:labelVisibilityMode="labeled" />
+    <item android:title="Notifications"
+        android:icon="@drawable/ic_baseline_notifications_none_24"
+        android:id="@+id/notifMenu"
+        app:labelVisibilityMode="labeled"/>
+
+    <item android:title="Account"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:id="@+id/accountMenu"
+        app:labelVisibilityMode="labeled"
+       />
+
+</menu>

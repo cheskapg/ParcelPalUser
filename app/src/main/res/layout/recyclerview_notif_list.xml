@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="25dp">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+
+        >
+
+        <ImageView
+            android:id="@+id/imageView_ParcelItem"
+            android:layout_width="51dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_baseline_notifications_none_24"
+            />
+
+        <RelativeLayout
+            android:id="@+id/rvstatusleft"
+            android:layout_width="334dp"
+            android:layout_height="77dp"
+            android:layout_toRightOf="@+id/imageView_ParcelItem">
+
+            <TextView
+                android:id="@+id/tvparcel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Parcel Status:"
+
+                android:textColor="@color/darkmidblue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_DeliveryStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/tvparcel"
+                android:text="Status"
+                android:textColor="@color/darkmidblue"
+                android:textSize="12dp" />
+
+            <RelativeLayout
+                android:id="@+id/textData"
+                android:layout_width="wrap_content"
+                android:layout_height="74dp"
+                android:layout_below="@+id/tvparcel">
+
+                <TextView
+                    android:id="@+id/textView_UserId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="User ID"
+                    android:textColor="@color/darkmidblue"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/textView_ParcelId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Parcel ID"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/textView_ParcelName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Parcel Name:"
+                    android:textColor="@color/darkmidblue"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/textView_TrackingId1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_ParcelName1"
+                    android:layout_marginLeft="8dp"
+                    android:text="Tracking ID"
+                    android:textColor="@color/darkmidblue"
+
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvProductName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@id/textView_ParcelName1"
+                    android:text="Name"
+                    android:textColor="@color/darkmidblue"
+
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/textView_TrackingId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_ParcelName1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@id/textView_ParcelName1"
+                    android:text="Tracking"
+                    android:textColor="@color/darkmidblue"
+                    android:textSize="14sp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/iconright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>
+
+    <!--    <?xml version="1.0" encoding="utf-8"?>-->
+    <!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="8dp"-->
+    <!--android:elevation="4dp"-->
+    <!--    >-->
+
+    <!--<RelativeLayout android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:padding="16dp"-->
+    <!--    >-->
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView_ParcelItem"-->
+    <!--        android:layout_width="100dp"-->
+    <!--        android:layout_height="100dp"-->
+    <!--        android:layout_marginLeft="10dp"-->
+    <!--        android:layout_marginTop="110dp"-->
+    <!--        android:layout_marginRight="10dp"-->
+    <!--        android:visibility="gone"/>-->
+
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/statusRight"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentEnd="true"-->
+    <!--        android:layout_marginRight="20dp"-->
+    <!--        >-->
+
+
+
+    <!--    </RelativeLayout>-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tv"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginLeft="2dp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        android:text="Parcel Status Update"-->
+    <!--        android:textColor="#000000"-->
+    <!--        android:textSize="20dp" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvProductName"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginLeft="2dp"-->
+    <!--        android:text="ParcelName"-->
+    <!--        android:textColor="#000000"-->
+    <!--        android:textSize="18dp"-->
+    <!--        android:layout_below="@+id/tv"/>-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView_TrackingId"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/tvProductName"-->
+    <!--        android:layout_marginTop="8dp"-->
+    <!--        android:text="TrackingID"-->
+    <!--        android:textColor="#000000"-->
+    <!--        android:textSize="16sp" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView_DeliveryStatus"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Delivery Status"-->
+    <!--        android:textColor="#000000"-->
+    <!--        android:textSize="20dp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        android:layout_toRightOf="@id/tv"-->
+
+    <!--        android:layout_marginLeft="30dp" />-->
+
+
+    <!--</RelativeLayout>-->
+    <!--</androidx.cardview.widget.CardView>-->
