@@ -33,7 +33,7 @@
 
             android:layout_toRightOf="@+id/profile_image"
             android:includeFontPadding="false"
-            android:text="Taimoor Sikander"
+            android:text="Loading"
             android:textColor="@color/white"
             android:textSize="20sp" />
 

@@ -28,6 +28,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -97,7 +99,7 @@ public class AccountFragment extends Fragment {
         btnUpdate = view.findViewById(R.id.btnUpdateUser);
         user = view.findViewById(R.id.etEmail);
         phone = view.findViewById(R.id.etPhone);
-        fullEmail = view.findViewById(R.id.etEmail);
+        fullEmail = view.findViewById(R.id.fullname_field);
         pass = view.findViewById(R.id.etPass);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -117,19 +119,18 @@ public class AccountFragment extends Fragment {
                     pass.setEnabled(true);
                     btnUpdate.setText("SAVE");
 
-                }  if(btnUpdate.getText().equals("SAVE")){
-                    user.setEnabled(true);
-                    phone.setEnabled(true);
-                    pass.setEnabled(true);
+                }  else if(btnUpdate.getText().equals("SAVE")){
+                    user.setEnabled(false); // Disable input fields while updating
+                    phone.setEnabled(false);
+                    pass.setEnabled(false);
+
+                    updateUserValue(user_id, user.getText().toString(), pass.getText().toString(), phone.getText().toString());
 
                     btnUpdate.setText("UPDATE");
-
                 }
-
-
-
             }
         });
+
     return view;
     }
 
@@ -173,6 +174,35 @@ public class AccountFragment extends Fragment {
         stringRequest.setRetryPolicy(retryPolicy);
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
         requestQueue.add(stringRequest);
+    }
+    private void updateUserValue( String userID,  String userEmail,  String userPass,  String userPhone){
+        String url = "https://script.google.com/macros/s/AKfycbyqLpyuWlS41hlzvBiq_Gp92rZnOysUxvw6UDIjObjIKtXDJEvvCQOYu8TAyh50gfjD/exec?action=updateUserInfo";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Handle response from the server (e.g., display a success message)
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String,String> params = new HashMap<>();
+
+                params.put("userId",userID);
+                params.put("email",userEmail);
+                params.put("phone",userPhone);
+                params.put("pass",userPass);
+                return params;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        queue.add(stringRequest);
     }
     private void getUserIDFromDatabase(String userEmail) {
         loading = ProgressDialog.show(getActivity(), "Loading", "please wait", false, true);
