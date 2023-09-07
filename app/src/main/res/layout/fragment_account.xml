@@ -44,9 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/fullname_field"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="1dp"
             android:layout_toRightOf="@+id/profile_image"
             android:includeFontPadding="false"
-            android:text="taimoor_sikander"
+            android:text="ParcelPal User"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
@@ -113,25 +114,31 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_user"
-            android:drawablePadding="10dp"
-            android:hint="Full Name"
-            android:textColorHint="@color/gray"></EditText>
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawableLeft="@drawable/ic_user"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:hint="Full Name"-->
+<!--            android:enabled="false"-->
+<!--            android:textColorHint="@color/gray"></EditText>-->
 
         <EditText
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/gray"
             android:drawableLeft="@drawable/ic_outline_email_24"
+            android:enabled="false"
+
             android:drawablePadding="10dp"
             android:hint="Email">
 
         </EditText>
 
         <EditText
+            android:enabled="false"
+            android:id="@+id/etPhone"
             android:layout_width="match_parent"
             android:textColorHint="@color/gray"
             android:layout_height="wrap_content"
@@ -142,10 +149,12 @@
         </EditText>
 
         <EditText
+            android:id="@+id/etPass"
             android:layout_width="match_parent"
             android:textColorHint="@color/gray"
             android:layout_height="wrap_content"
-
+            android:enabled="false"
+            android:inputType="textPassword"
             android:drawableLeft="@drawable/ic_baseline_password_24"
             android:drawablePadding="10dp"
             android:hint="Password">
@@ -153,6 +162,7 @@
         </EditText>
 
         <Button
+            android:id="@+id/btnUpdateUser"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
