@@ -126,6 +126,8 @@ public class AccountFragment extends Fragment {
 
                     updateUserValue(user_id, user.getText().toString(), pass.getText().toString(), phone.getText().toString());
 
+                    getUserIDFromDatabase(loggedInUserEmail);
+
                     btnUpdate.setText("UPDATE");
                 }
             }
