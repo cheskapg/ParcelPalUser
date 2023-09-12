@@ -21,7 +21,9 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -38,22 +40,29 @@ import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.squareup.picasso.Picasso;
 
 public class PayMobileWallet extends AppCompatActivity {
     Bitmap selectedImage;
-//    private static final int PICK_IMAGE_REQUEST = 1;
+    //    private static final int PICK_IMAGE_REQUEST = 1;
     private ActivityResultLauncher<String> imagePickerLauncher;
-
+    EditText product_name_edittext, tracking_id_edittext, walletType_et, order_total_edittext, courierAccNum_et, courierName_et;
+    ProgressDialog loading;
     String getTrackingID;
+    String getParcel;
     Button uploadBtn, btnsendToDb;
     ImageView chosenImage;
+    String trackingId, orderTotal, paymentType, productName;
     private ProgressDialog progressDialog;
     public static final String OK = "OK";
     public static final String CANCEL = "Cancel";
@@ -66,14 +75,24 @@ public class PayMobileWallet extends AppCompatActivity {
         }
 
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_mobile_wallet);
         uploadBtn = (Button) findViewById(R.id.btnUpload);
+//        getTrackingId();
         getParcelIntent();
+        getParcelItemById();
         btnsendToDb = (Button) findViewById(R.id.btnSendToDb);
         chosenImage = (ImageView) findViewById(R.id.iv_uphoto);
+        product_name_edittext = findViewById(R.id.product_name_edittext);
+        tracking_id_edittext = findViewById(R.id.tracking_id_edittext);
+        walletType_et = findViewById(R.id.walletType_et);
+        order_total_edittext = findViewById(R.id.order_total_edittext);
+        courierAccNum_et = findViewById(R.id.courierAccNum_et);
+        courierName_et = findViewById(R.id.courierName_et);
+
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,10 +125,10 @@ public class PayMobileWallet extends AppCompatActivity {
     }
 
 
-
     private void showFileChooser() {
         imagePickerLauncher.launch("image/*");
     }
+
     public void displayAlertUploadOk(Context context,
                                      String alertTitle, String alertMessage,
                                      DialogInterface.OnClickListener okListener) {
@@ -124,7 +143,7 @@ public class PayMobileWallet extends AppCompatActivity {
                                         int which) {
                         //DELETE FROM DB BUT FOR TESTING WE COMMENT IT OUT
 //                        deleteItemFromDatabase(getParcel);
-                        Toast.makeText(context, "YOU Uploaded Proof of Payment for  " + getTrackingID,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "YOU Uploaded Proof of Payment for  " + getTrackingID, Toast.LENGTH_SHORT).show();
 //
                         dialog.dismiss();
 
@@ -146,11 +165,20 @@ public class PayMobileWallet extends AppCompatActivity {
         alertDialog.show();
     }
 
-    public void getParcelIntent() {
+    public void getTrackingId() {
         Intent intent = getIntent();
         getTrackingID = intent.getStringExtra("trackingID");
-        Toast myToast = Toast.makeText(PayMobileWallet.this, getTrackingID, Toast.LENGTH_LONG);
+        Toast myToast = Toast.makeText(PayMobileWallet.this, getParcel, Toast.LENGTH_LONG);
         myToast.show();
+
+    }
+
+    public void getParcelIntent() {
+        Intent intent = getIntent();
+        getParcel = intent.getStringExtra("parcelid");
+        Toast myToast = Toast.makeText(PayMobileWallet.this, getParcel, Toast.LENGTH_LONG);
+        myToast.show();
+
 
     }
 
@@ -161,7 +189,7 @@ public class PayMobileWallet extends AppCompatActivity {
             public void onResponse(String response) {
                 hideProgressDialog();
                 Toast.makeText(PayMobileWallet.this, response.toString(), Toast.LENGTH_SHORT).show();
-                displayAlertUploadOk(PayMobileWallet.this, "Uploaded","Proof of Payment Uploaded", DISMISSER );
+                displayAlertUploadOk(PayMobileWallet.this, "Uploaded", "Proof of Payment Uploaded", DISMISSER);
 
             }
         }, new Response.ErrorListener() {
@@ -170,11 +198,11 @@ public class PayMobileWallet extends AppCompatActivity {
 
                 Toast.makeText(PayMobileWallet.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
-        }){
+        }) {
             @Override
-            protected Map<String, String> getParams(){
-                Map<String,String> params = new HashMap<>();
-                params.put("action","addParcelItem");
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("action", "addParcelItem");
                 params.put("trackingID", getTrackingID);
                 params.put("imageBlob", imageBlob);
 
@@ -183,7 +211,7 @@ public class PayMobileWallet extends AppCompatActivity {
         };
 
         int socketTimeOut = 50000;
-        RetryPolicy retryPolicy = new DefaultRetryPolicy(socketTimeOut,0,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        RetryPolicy retryPolicy = new DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(retryPolicy);
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -222,18 +250,131 @@ public class PayMobileWallet extends AppCompatActivity {
     }
 
 
-// Helper method to convert a bitmap to a base64-encoded stringprivate
-            public String getStringImage(Bitmap bmp) {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-            byte[] imageBytes = baos.toByteArray();
-            String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+    // Helper method to convert a bitmap to a base64-encoded stringprivate
+    public String getStringImage(Bitmap bmp) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
-            return encodedImage;
+        return encodedImage;
+    }
+
+    private String getParcelId() {
+        return getParcel;
+    }
+
+    private void getParcelItemById() {
+        loading = ProgressDialog.show(this, "Loading", "please wait", false, true);
+        String url = String.format("https://script.google.com/macros/s/AKfycbxFjXoLfh9G982vXM13_tE12LL-2k3IRZH66-I6S1xZlroGaFmGBQ8ol-W5A7udzwU/exec?action=getPayMobileInfoByParcelId&parcelId=%s", getParcelId());
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        parseItems(response);
+                        Toast myToast = Toast.makeText(PayMobileWallet.this, response, Toast.LENGTH_LONG);
+                        myToast.show();
+
+                    }
+
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error response                }
+                    }
+
+                }
+        );
+
+        int socketTimeOut = 50000;
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(stringRequest);
+
+
+    }
+    //parse the response from the string query
+
+    //pass string id parameter
+//    private void parseItems(String jsonResponse) {
+//        try {
+//            JSONObject jobj = new JSONObject(jsonResponse);
+//            JSONArray jarray = jobj.getJSONArray("items");
+//
+//            // Iterate over the items array
+//            for (int i = 0; i < jarray.length(); i++) {
+//                JSONObject jo = jarray.getJSONObject(i);
+//
+//                    trackingId = jo.getString("tracking_id");
+//                    orderTotal = jo.getString("orderTotal");
+//                    paymentType = jo.getString("paymentType_id");
+//                    productName = jo.getString("productName");
+//
+//                    break; // Exit the loop after finding the matching item
+//
+//
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//
+//        }
+//
+//
+//        product_name_edittext.setText(productName);
+//        tracking_id_edittext.setText(trackingId);
+//        order_total_edittext.setText(orderTotal);
+//        walletType_et.setText(paymentType);
+//
+//        loading.dismiss();
+//
+//
+//    }
+    private void parseItems(String jsonResponse) {
+        try {
+            JSONObject jobj = new JSONObject(jsonResponse);
+            // Retrieve the payment details from the "parcelList" table
+
+            JSONArray jarray = jobj.getJSONArray("parcelList");
+
+            // Iterate over the items array
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jo = jarray.getJSONObject(i);
+
+                String trackingId = jo.getString("tracking_id");
+                String productName = jo.getString("productName");
+                String orderTotal = jo.getString("orderTotal");
+
+                // Retrieve the payment details from the "payment" table
+                String courierName = "";
+                String courierMobileWallet = "";
+                String mobileWalletType = "";
+
+                // Get the payment details from the "payment" array
+                JSONArray paymentArray = jobj.getJSONArray("payment");
+                for (int j = 0; j < paymentArray.length(); j++) {
+                    JSONObject paymentObj = paymentArray.getJSONObject(j);
+                    courierName = paymentObj.getString("courierName");
+                    courierMobileWallet = paymentObj.getString("courierMobileWallet");
+                    mobileWalletType = paymentObj.getString("mobileWalletType");
+                    break;
+
+                }
+
+                product_name_edittext.setText(productName);
+                tracking_id_edittext.setText(trackingId);
+                order_total_edittext.setText(orderTotal);
+                walletType_et.setText(mobileWalletType);
+                courierAccNum_et.setText(courierMobileWallet);
+                courierName_et.setText(courierName);
             }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        loading.dismiss();
 
-
-
+    }
 }
 //    private void updateGoogleSheets(String imageBlob) {
 //        // Call the Google Apps Script function to update the Google Sheets

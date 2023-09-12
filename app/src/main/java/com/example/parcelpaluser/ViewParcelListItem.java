@@ -45,7 +45,6 @@ public class ViewParcelListItem extends AppCompatActivity {
     TextView tvTrackingId,uploadstatus, tvOrderTotal, tvProductName, tvOrderId, tvPaymentMethod, tvCompartment, tvDeliveryStatus, tvDateReceived;
     String trackingId, userId, orderTotal, paymentType, payment_id, productName, deliveryStatus, orderId, dateReceived, paymentComp;
     public String getParcel;
-    public String getTrackingId;
     String updParcelId, updUserId;
     ImageView viewMenu, imageProof;
     ProgressDialog loading;
@@ -115,9 +114,10 @@ public class ViewParcelListItem extends AppCompatActivity {
         btnPayMobile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String getTracking = trackingId;
+                String getTracking = getParcel;
                 Intent moveToPayMobile = new Intent(ViewParcelListItem.this, PayMobileWallet.class);
                 moveToPayMobile.putExtra("trackingID", getTracking);
+                moveToPayMobile.putExtra("parcelid", getParcel);
 
                 startActivity(moveToPayMobile);
             }
@@ -140,7 +140,7 @@ public class ViewParcelListItem extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),getTracking(), Toast.LENGTH_SHORT).show();
                         if(paymentType.equals("Mobile Wallet")) {
 
-                            if (tvDeliveryStatus.getText().toString().equals("attempting to deliver") && fileUrl == null) {
+                            if (tvDeliveryStatus.getText().toString().equals("Attempting delivery") && fileUrl == null) {
                                 imageProof.setVisibility(View.GONE);
                                 btnPayMobile.setVisibility(View.VISIBLE);
                                 uploadstatus.setVisibility(View.VISIBLE);
@@ -264,9 +264,10 @@ public class ViewParcelListItem extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        getPaymentImageUrl();
+
                         parseItems(response, getParcel);
 
-                        getPaymentImageUrl();
 
                     }
 
@@ -341,46 +342,46 @@ public class ViewParcelListItem extends AppCompatActivity {
         tvDateReceived.setText(dateReceived);
 //        getTracking = trackingId;
 
-        if(paymentType.equals("Mobile Wallet")) {
-            btnPayMobile.setVisibility(View.VISIBLE);
-            if (fileUrl == null && tvDeliveryStatus.getText().toString().equals("pending") ){
-                uploadstatus.setVisibility(View.VISIBLE);
-                imageProof.setVisibility(View.GONE);
-                btnPayMobile.setVisibility(View.VISIBLE);
+//        if(paymentType.equals("Mobile Wallet")) {
+//            btnPayMobile.setVisibility(View.VISIBLE);
+//            if (fileUrl == null && tvDeliveryStatus.getText().toString().equals("pending") ){
+//                uploadstatus.setVisibility(View.VISIBLE);
+//                imageProof.setVisibility(View.GONE);
+//                btnPayMobile.setVisibility(View.VISIBLE);
+//
+//            }
+//           else{
+//                imageProof.setVisibility(View.VISIBLE);
+//                uploadstatus.setVisibility(View.GONE);
+//                btnPayMobile.setVisibility(View.VISIBLE);
+//
+//                String imageUrl = fileUrl; // Replace with your file ID
+//
+//                Picasso.get().load(imageUrl).into(imageProof);
+//            }// Use the file URL as needed
+//            textView_Proofpay.setVisibility(View.VISIBLE);
+//        }
+//        else{
+//            btnPayMobile.setVisibility(View.INVISIBLE);
+//            textView_Proofpay.setVisibility(View.GONE);
+//
+//        }
+//
+//        if(paymentType.equals("Cash on Delivery")) {
+//            tvCompartment.setVisibility(View.VISIBLE);
+//            TextView tvCompartment2 = findViewById(R.id.tv_compartment1);
+//            tvCompartment2.setVisibility(View.VISIBLE);
+//            btnPayMobile.setVisibility(View.GONE);
+//
+//        }
+//        if(paymentType.equals("Prepaid")) {
+//            tvCompartment.setVisibility(View.GONE);
+//            TextView tvCompartment2 = findViewById(R.id.tv_compartment1);
+//            tvCompartment2.setVisibility(View.GONE);
+//            btnPayMobile.setVisibility(View.GONE);
+//
+//        }
 
-            }
-           else{
-                imageProof.setVisibility(View.VISIBLE);
-                uploadstatus.setVisibility(View.GONE);
-                btnPayMobile.setVisibility(View.VISIBLE);
-
-                String imageUrl = fileUrl; // Replace with your file ID
-
-                Picasso.get().load(imageUrl).into(imageProof);
-            }// Use the file URL as needed
-            textView_Proofpay.setVisibility(View.VISIBLE);
-        }
-        else{
-            btnPayMobile.setVisibility(View.INVISIBLE);
-            textView_Proofpay.setVisibility(View.GONE);
-
-        }
-
-        if(paymentType.equals("Cash on Delivery")) {
-            tvCompartment.setVisibility(View.VISIBLE);
-            TextView tvCompartment2 = findViewById(R.id.tv_compartment1);
-            tvCompartment2.setVisibility(View.VISIBLE);
-            btnPayMobile.setVisibility(View.GONE);
-
-
-        }
-        else{
-            btnPayMobile.setVisibility(View.GONE);
-
-            tvCompartment.setVisibility(View.GONE);
-            TextView tvCompartment2 = findViewById(R.id.tv_compartment1);
-            tvCompartment2.setVisibility(View.GONE);
-        }
 
 
 

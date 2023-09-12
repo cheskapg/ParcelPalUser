@@ -63,7 +63,7 @@
                     android:layout_toRightOf="@id/logo"
                     android:layout_weight="1"
                     android:text="Parcel Information"
-              android:textColor="@color/white"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
