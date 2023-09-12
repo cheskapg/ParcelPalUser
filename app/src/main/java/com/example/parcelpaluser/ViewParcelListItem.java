@@ -114,9 +114,8 @@ public class ViewParcelListItem extends AppCompatActivity {
         btnPayMobile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String getTracking = getParcel;
                 Intent moveToPayMobile = new Intent(ViewParcelListItem.this, PayMobileWallet.class);
-                moveToPayMobile.putExtra("trackingID", getTracking);
+                moveToPayMobile.putExtra("trackingID", getTracking());
                 moveToPayMobile.putExtra("parcelid", getParcel);
 
                 startActivity(moveToPayMobile);
@@ -145,7 +144,7 @@ public class ViewParcelListItem extends AppCompatActivity {
                                 btnPayMobile.setVisibility(View.VISIBLE);
                                 uploadstatus.setVisibility(View.VISIBLE);
                                 loading.dismiss();
-                            } else if (tvDeliveryStatus.getText().toString().equals("pending")) {
+                            } else if (tvDeliveryStatus.getText().toString().equals("Pending")) {
                                 imageProof.setVisibility(View.GONE);
                                 btnPayMobile.setVisibility(View.GONE);
                                 uploadstatus.setVisibility(View.VISIBLE);

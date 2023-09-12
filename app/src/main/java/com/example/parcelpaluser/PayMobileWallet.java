@@ -14,6 +14,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -81,7 +82,7 @@ public class PayMobileWallet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_mobile_wallet);
         uploadBtn = (Button) findViewById(R.id.btnUpload);
-//        getTrackingId();
+        getTrackingId();
         getParcelIntent();
         getParcelItemById();
         btnsendToDb = (Button) findViewById(R.id.btnSendToDb);
@@ -92,7 +93,14 @@ public class PayMobileWallet extends AppCompatActivity {
         order_total_edittext = findViewById(R.id.order_total_edittext);
         courierAccNum_et = findViewById(R.id.courierAccNum_et);
         courierName_et = findViewById(R.id.courierName_et);
+        Drawable imageDrawable = chosenImage.getDrawable();
+        if (imageDrawable != null && imageDrawable.getConstantState().equals(getResources().getDrawable(R.drawable.ic_baseline_hide_image_100).getConstantState())) {
+            btnsendToDb.setVisibility(View.GONE);
+        }
+        else{
+            btnsendToDb.setVisibility(View.VISIBLE);
 
+        }
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +111,15 @@ public class PayMobileWallet extends AppCompatActivity {
         btnsendToDb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                uploadImageToSheet();
+                Drawable imageDrawable = chosenImage.getDrawable();
+                if (imageDrawable != null && imageDrawable.getConstantState().equals(getResources().getDrawable(R.drawable.ic_baseline_hide_image_100).getConstantState())) {
+                    btnsendToDb.setVisibility(View.GONE);
+                    Toast.makeText(PayMobileWallet.this, "No photo uploaded" + getTrackingID, Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    uploadImageToSheet();
+
+                }
             }
         });
         imagePickerLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(),
@@ -127,6 +143,8 @@ public class PayMobileWallet extends AppCompatActivity {
 
     private void showFileChooser() {
         imagePickerLauncher.launch("image/*");
+        btnsendToDb.setVisibility(View.VISIBLE);
+
     }
 
     public void displayAlertUploadOk(Context context,
@@ -141,11 +159,11 @@ public class PayMobileWallet extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog,
                                         int which) {
-                        //DELETE FROM DB BUT FOR TESTING WE COMMENT IT OUT
-//                        deleteItemFromDatabase(getParcel);
-                        Toast.makeText(context, "YOU Uploaded Proof of Payment for  " + getTrackingID, Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(context, "YOU Uploaded Proof of Payment for  " + getParcel, Toast.LENGTH_SHORT).show();
 //
                         dialog.dismiss();
+
 
                         Intent movetoUserHome = new Intent(context, UserMainHome.class);
                         startActivity(movetoUserHome);
@@ -168,7 +186,7 @@ public class PayMobileWallet extends AppCompatActivity {
     public void getTrackingId() {
         Intent intent = getIntent();
         getTrackingID = intent.getStringExtra("trackingID");
-        Toast myToast = Toast.makeText(PayMobileWallet.this, getParcel, Toast.LENGTH_LONG);
+        Toast myToast = Toast.makeText(PayMobileWallet.this, "trackingid get"+getTrackingID, Toast.LENGTH_LONG);
         myToast.show();
 
     }
@@ -184,7 +202,7 @@ public class PayMobileWallet extends AppCompatActivity {
 
     private void updateGoogleSheets(String imageBlob) {
         // Call the Google Apps Script function to update the Google Sheets
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://script.google.com/macros/s/AKfycbwS2Is-wrG3aCzV9C9EwA7dHFn8EvrJWfSnBoqe_t7Sf8gm9VxJJ5KZ4GFXmRnD2NVF/exec?action=addProofPaymentImage", new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://script.google.com/macros/s/AKfycbwS2Is-wrG3aCzV9C9EwA7dHFn8EvrJWfSnBoqe_t7Sf8gm9VxJJ5KZ4GFXmRnD2NVF/exec?action=addProofPaymentImage", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 hideProgressDialog();
@@ -202,7 +220,7 @@ public class PayMobileWallet extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("action", "addParcelItem");
+//                params.put("action", "addParcelItem");
                 params.put("trackingID", getTrackingID);
                 params.put("imageBlob", imageBlob);
 
@@ -364,7 +382,7 @@ public class PayMobileWallet extends AppCompatActivity {
 
                 product_name_edittext.setText(productName);
                 tracking_id_edittext.setText(trackingId);
-                order_total_edittext.setText(orderTotal);
+                order_total_edittext.setText("Php " + orderTotal);
                 walletType_et.setText(mobileWalletType);
                 courierAccNum_et.setText(courierMobileWallet);
                 courierName_et.setText(courierName);
