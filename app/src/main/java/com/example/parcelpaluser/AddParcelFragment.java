@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -217,13 +218,19 @@ public class AddParcelFragment extends Fragment {
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+
             if ("getUserId".equals(intent.getAction())) {
+
                 String receivedString = intent.getStringExtra("userId");
                 userId = receivedString;
                 // Handle the received string
             }
+            Toast.makeText(getContext(),"getUserId : add parcel frag " +userId, Toast.LENGTH_SHORT).show();
+            Log.d("Parcel", "getUserId : add parcel frag " +userId);
         }
+
     };
+
     private void addParcel() {
         String tracking_id = etTrackingId.getText().toString();
         String orderTotal = etOrderTotal.getText().toString();
@@ -237,7 +244,7 @@ public class AddParcelFragment extends Fragment {
 
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://script.google.com/macros/s/AKfycbz2GSZM8IQ7UU4x4BZh5I2LZhbO79qYEFwb5IEFT94ovsUWPoCG58U4XsSuWYBzyQ/exec", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://script.google.com/macros/s/AKfycbycoJM-I4YdT2oMwlI8ZZY8a9HkqrH1N36Aux_Zqcc6MqG6dPnLiL00QODfjk_ESfEK/exec", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 // Notify the parent activity or fragment to replace the current fragment
@@ -267,9 +274,13 @@ public class AddParcelFragment extends Fragment {
                 params.put("productName", productName);
                 params.put("order_id", order_id);
                 params.put("payment_Comp", paymentCompText);
+
                 return params;
+
             }
+
         };
+
 
         int socketTimeOut = 50000;
         RetryPolicy retryPolicy = new DefaultRetryPolicy(socketTimeOut,0,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);

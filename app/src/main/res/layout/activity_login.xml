@@ -46,7 +46,7 @@ android:background="#081B34">
         android:textColor="#FFFFFF"
         android:textColorHint="#D3D3D3"
         android:backgroundTint="@color/white"
-
+        android:inputType="textPassword"
         android:textSize="16sp"
         android:layout_marginBottom="10dp"/>
 

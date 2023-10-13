@@ -168,7 +168,11 @@ public class ViewParcelListItem extends AppCompatActivity {
                             }
 
 
-                        }//Use the file URL as needed
+                        }
+                        else{
+                            btnPayMobile.setVisibility(View.GONE);
+                            textView_Proofpay.setVisibility(View.GONE);
+                        }
                         loading.dismiss();
 
 
