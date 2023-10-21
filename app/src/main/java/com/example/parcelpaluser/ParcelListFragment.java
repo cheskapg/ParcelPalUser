@@ -150,6 +150,8 @@ public class ParcelListFragment extends Fragment {
                     }
                 }
         );
+
+        //FILTER ALL PENDING AND RECEIVED
         rgFilter.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId)
@@ -165,7 +167,7 @@ public class ParcelListFragment extends Fragment {
 
                     case R.id.rbpending:
 
-                        ParcelListFragment.this.mAdapter.getFilter("to receive");
+                        ParcelListFragment.this.mAdapter.getFilter("Pending");
                         break;
 
                     case R.id.rbcomplete:

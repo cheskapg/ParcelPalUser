@@ -298,6 +298,6 @@ public class AddParcelFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(broadcastReceiver);
+//        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(broadcastReceiver);
     }
 }
