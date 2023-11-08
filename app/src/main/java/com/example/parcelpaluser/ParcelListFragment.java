@@ -171,7 +171,7 @@ public class ParcelListFragment extends Fragment {
                         break;
 
                     case R.id.rbcomplete:
-                        ParcelListFragment.this.mAdapter.getFilter("Received");
+                        ParcelListFragment.this.mAdapter.getFilter("Complete");
                 }
             }
         });

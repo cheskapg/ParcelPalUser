@@ -1,5 +1,6 @@
 package com.example.parcelpaluser;
 
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -32,11 +33,15 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import android.content.Intent;
 
 import androidx.fragment.app.FragmentManager;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;import android.content.BroadcastReceiver;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import android.content.BroadcastReceiver;
 import android.content.Context;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AddParcelFragment#newInstance} factory method to
@@ -50,17 +55,17 @@ public class AddParcelFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     EditText etTrackingId, etOrderTotal, etProductName, etOrderId;
     RadioGroup etPaymentType, paymentComp;
-    RadioButton paymentRadioBT, paymentCompBT;
+    RadioButton paymentRadioBT, paymentCompBT, comp1,comp2,comp3,comp4;
     TextView paymentCompTv;
     Button btnAddParcel;
     int selectedPayment, selectedPaymentComp;
-    String paymentCompText  , userId;
+    String paymentCompText, userId;
     boolean updatepaymentchosen;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-//    private BroadcastReceiver broadcastReceiver;
+    //    private BroadcastReceiver broadcastReceiver;
     private IntentFilter intentFilter;
 
     public AddParcelFragment() {
@@ -109,42 +114,56 @@ public class AddParcelFragment extends Fragment {
         etOrderTotal = view.findViewById(R.id.order_total_edittext);
         etPaymentType = view.findViewById(R.id.payment_type_radio_group);
         btnAddParcel = view.findViewById(R.id.btnAddParcel);
-
+        comp1 =view.findViewById(R.id.comp1_radio_button);
+        comp2 =view.findViewById(R.id.comp2_radio_button);
+        comp3 =view.findViewById(R.id.comp3_radio_button);
+        comp4 =view.findViewById(R.id.comp4_radio_button);
         etProductName = view.findViewById(R.id.product_name_edittext);
         etOrderId = view.findViewById(R.id.order_id_edittext);
-         selectedPayment = etPaymentType.getCheckedRadioButtonId();
-         selectedPaymentComp = paymentComp.getCheckedRadioButtonId();
+        selectedPayment = etPaymentType.getCheckedRadioButtonId();
+        selectedPaymentComp = paymentComp.getCheckedRadioButtonId();
         paymentRadioBT = (RadioButton) view.findViewById(selectedPayment);
         paymentCompBT = (RadioButton) view.findViewById(selectedPaymentComp);
-        etPaymentType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+        checkCompartmentExisting();
+        etPaymentType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId)
-            {
-                switch(checkedId)
-                {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
                     case R.id.cod_radio_button:
                         paymentCompTv.setVisibility(View.VISIBLE);
                         paymentComp.setVisibility(View.VISIBLE);
                         updatepaymentchosen = false;
 
-                        paymentComp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+                        paymentComp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                             @Override
-                            public void onCheckedChanged(RadioGroup group, int checkedId)
-                            {
-                                switch(checkedId)
-                                {
+                            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                                switch (checkedId) {
                                     case R.id.comp1_radio_button:
 
 
                                         int selectedPaymentComp = paymentComp.getCheckedRadioButtonId();
                                         paymentCompBT = (RadioButton) view.findViewById(selectedPaymentComp);
 
-                                        paymentCompText = "1" ;                           break;
+                                        paymentCompText = "1";
+                                        break;
                                     case R.id.comp2_radio_button:
                                         selectedPaymentComp = paymentComp.getCheckedRadioButtonId();
                                         paymentCompBT = (RadioButton) view.findViewById(selectedPaymentComp);
 
                                         paymentCompText = "2";
+                                        break;
+                                    case R.id.comp3_radio_button:
+                                        selectedPaymentComp = paymentComp.getCheckedRadioButtonId();
+                                        paymentCompBT = (RadioButton) view.findViewById(selectedPaymentComp);
+
+                                        paymentCompText = "3";
+                                        break;
+                                    case R.id.comp4_radio_button:
+                                        selectedPaymentComp = paymentComp.getCheckedRadioButtonId();
+                                        paymentCompBT = (RadioButton) view.findViewById(selectedPaymentComp);
+
+                                        paymentCompText = "4";
+                                        break;
 
                                 }
                             }
@@ -154,17 +173,18 @@ public class AddParcelFragment extends Fragment {
                         paymentCompTv.setVisibility(View.GONE);
                         paymentComp.setVisibility(View.GONE);
                         updatepaymentchosen = true;
-                        paymentCompText ="None";
+                        paymentCompText = "None";
 
                     case R.id.prepaid_radio_button:
                         paymentCompTv.setVisibility(View.GONE);
                         paymentComp.setVisibility(View.GONE);
                         updatepaymentchosen = false;
-                        paymentCompText ="None";
+                        paymentCompText = "None";
                         break;
                 }
             }
         });
+
         btnAddParcel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -215,6 +235,7 @@ public class AddParcelFragment extends Fragment {
         return view;
 
     }
+
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -225,11 +246,86 @@ public class AddParcelFragment extends Fragment {
                 userId = receivedString;
                 // Handle the received string
             }
-            Toast.makeText(getContext(),"getUserId : add parcel frag " +userId, Toast.LENGTH_SHORT).show();
-            Log.d("Parcel", "getUserId : add parcel frag " +userId);
+            Toast.makeText(getContext(), "getUserId : add parcel frag " + userId, Toast.LENGTH_SHORT).show();
+            Log.d("Parcel", "getUserId : add parcel frag " + userId);
         }
 
     };
+    private void checkCompartmentExisting() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://script.google.com/macros/s/AKfycbxe60Ea0TWyGRRig0LemVXLYN_KWBV_QJ6gPZyfiXIIJXsrDLPOqQHk2up0B2Nv_DIu/exec?action=checkExistingComp",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equals("disable 1")) {
+                            comp1.setEnabled(false);
+                        } else if (response.equals("disable 2")) {
+                            comp2.setEnabled(false);
+                        } else if (response.equals("disable 3")) {
+                            comp3.setEnabled(false);
+                        } else if (response.equals("disable 4")) {
+                            comp4.setEnabled(false);
+                        } else if (response.equals("disable 1,disable 2")) {
+                            comp1.setEnabled(false);
+                            comp2.setEnabled(false);
+                        } else if (response.equals("disable 1,disable 3")) {
+                            comp1.setEnabled(false);
+                            comp3.setEnabled(false);
+                        } else if (response.equals("disable 1,disable 4")) {
+                            comp1.setEnabled(false);
+                            comp4.setEnabled(false);
+                        } else if (response.equals("disable 2,disable 3")) {
+                            comp2.setEnabled(false);
+                            comp3.setEnabled(false);
+                        } else if (response.equals("disable 2,disable 4")) {
+                            comp2.setEnabled(false);
+                            comp4.setEnabled(false);
+                        } else if (response.equals("disable 3,disable 4")) {
+                            comp3.setEnabled(false);
+                            comp4.setEnabled(false);
+                        } else if (response.equals("disable 1,disable 2,disable 3")) {
+                            comp1.setEnabled(false);
+                            comp2.setEnabled(false);
+                            comp3.setEnabled(false);
+                        } else if (response.equals("disable 1,disable 2,disable 4")) {
+                            comp1.setEnabled(false);
+                            comp2.setEnabled(false);
+                            comp4.setEnabled(false);
+                        } else if (response.equals("disable 1,disable 3,disable 4")) {
+                            comp1.setEnabled(false);
+                            comp3.setEnabled(false);
+                            comp4.setEnabled(false);
+                        } else if (response.equals("disable 2,disable 3,disable 4")) {
+                            comp2.setEnabled(false);
+                            comp3.setEnabled(false);
+                            comp4.setEnabled(false);
+                        } else if (response.equals("disable 1,disable 2,disable 3,disable 4")) {
+                            comp1.setEnabled(false);
+                            comp2.setEnabled(false);
+                            comp3.setEnabled(false);
+                            comp4.setEnabled(false);
+                        }
+                        else{
+                            comp1.setEnabled(true);
+                            comp2.setEnabled(true);
+                            comp3.setEnabled(true);
+                            comp4.setEnabled(true);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error response
+                    }
+                }
+        );
+
+        int socketTimeOut = 50000;
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        RequestQueue queue = Volley.newRequestQueue(requireContext());
+        queue.add(stringRequest);
+    }
 
     private void addParcel() {
         String tracking_id = etTrackingId.getText().toString();
@@ -243,14 +339,13 @@ public class AddParcelFragment extends Fragment {
         String paymentType_id = paymentRadioBT.getText().toString();
 
 
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://script.google.com/macros/s/AKfycbycoJM-I4YdT2oMwlI8ZZY8a9HkqrH1N36Aux_Zqcc6MqG6dPnLiL00QODfjk_ESfEK/exec", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 // Notify the parent activity or fragment to replace the current fragment
 
                 if (getParentFragment() != null) {
-                    ((UserMainHome) getActivity()).replaceCurrentFragment(new ParcelListFragment(),true );
+                    ((UserMainHome) getActivity()).replaceCurrentFragment(new ParcelListFragment(), true);
                 } else if (getActivity() != null) {
                     ((UserMainHome) getActivity()).replaceCurrentFragment(new ParcelListFragment(), true);
                 }
@@ -261,11 +356,11 @@ public class AddParcelFragment extends Fragment {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
             @Override
-            protected Map<String, String> getParams(){
-                Map<String,String> params = new HashMap<>();
-                params.put("action","addParcelItemOnly");
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("action", "addParcelItemOnly");
                 params.put("tracking_id", tracking_id);
                 params.put("user_id", userId);
 
@@ -283,18 +378,20 @@ public class AddParcelFragment extends Fragment {
 
 
         int socketTimeOut = 50000;
-        RetryPolicy retryPolicy = new DefaultRetryPolicy(socketTimeOut,0,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        RetryPolicy retryPolicy = new DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(retryPolicy);
 
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
         requestQueue.add(stringRequest);
 
     }
+
     @Override
     public void onResume() {
         super.onResume();
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(broadcastReceiver, new IntentFilter("getUserId"));
     }
+
     @Override
     public void onPause() {
         super.onPause();

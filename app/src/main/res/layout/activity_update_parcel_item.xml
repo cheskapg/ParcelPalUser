@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".updateParcelItem"
+    android:background="@color/parcelpalbluedark"
 
     android:fitsSystemWindows="true"
-    android:background="@color/parcelpalbluedark">
+    tools:context=".updateParcelItem">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -33,276 +33,296 @@
         android:fitsSystemWindows="true"
         android:isScrollContainer="true"
         tools:ignore="NotSibling">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-    <LinearLayout
-        android:id="@+id/Linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        >
-        <ImageButton
-            android:id="@+id/back_button"
-            android:layout_marginTop="0dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:backgroundTint="@color/parcelpalbluedark"
-            android:src="@mipmap/ic_launcher_parcelpal_background"
-            android:scaleType="fitXY"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:paddingBottom="20dp"
-
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:text="Update Your Parcel"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-
-        <!--        <Button-->
-        <!--            android:id="@+id/save_button"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:text="Save"-->
-        <!--            android:enabled="false" />-->
-
-    </LinearLayout>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/scrollView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Linear"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/rounded_square"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="2dp"
-        app:cardUseCompatPadding="true"
-        android:backgroundTint="@color/white">
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Linear"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:isScrollContainer="false"
-            android:fitsSystemWindows="true"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            tools:ignore="NotSibling">
+            <LinearLayout
+                android:id="@+id/Linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:paddingBottom="50dp"
-                android:layout_height="match_parent">
-                <!-- Parcel ID -->
-                <EditText
-                    android:id="@+id/product_name_edittext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Product Name"
-                    android:inputType="text"
-                    android:maxLength="10"
-                    android:maxLines="1"
-                    android:backgroundTint="@color/gray"
-                    android:padding="8dp"
-                    android:textColorHint="@color/gray" />
-                <!-- Tracking ID -->
-                <!-- Order Total -->
-                <EditText
-                    android:id="@+id/tracking_id_edittext"
+                <ImageButton
+                    android:id="@+id/back_button"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="0dp"
+                    android:backgroundTint="@color/parcelpalbluedark"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_launcher_parcelpal_background" />
 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/product_name_edittext"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="0dp"
-                    android:backgroundTint="@color/gray"
-                    android:hint="Tracking ID"
-                    android:inputType="text"
-                    android:maxLength="20"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textColorHint="@color/gray" />
-
-                <EditText
-                    android:backgroundTint="@color/gray"
-
-                    android:id="@+id/order_total_edittext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/order_id_edittext"
-                    android:layout_marginTop="20dp"
-                    android:hint="Order Total"
-                    android:inputType="numberDecimal"
-                    android:maxLength="10"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textColorHint="@color/gray" />
                 <TextView
-                    android:id="@+id/tvPaymentMeth"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/order_total_edittext"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/gray"
-                    android:text="Payment Method"></TextView>
-                <!-- Payment Type ID -->
-<!--                <RadioGroup-->
-<!--                    android:id="@+id/payment_type_radio_group"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_below="@id/tvPaymentMeth"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    >-->
+
+                    android:layout_weight="1"
+                    android:paddingBottom="20dp"
+                    android:text="Update Your Parcel"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
 
-<!--                    <RadioButton-->
-<!--                        android:id="@+id/prepaid_radio_button"-->
-<!--                        android:buttonTint="@color/gray"-->
-<!--                        android:textColor="@color/gray"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Prepaid"-->
-<!--                        />-->
+                <!--        <Button-->
+                <!--            android:id="@+id/save_button"-->
+                <!--            android:layout_width="wrap_content"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:text="Save"-->
+                <!--            android:enabled="false" />-->
 
-<!--                    <RadioButton-->
-<!--                        android:buttonTint="@color/gray"-->
-
-<!--                        android:id="@+id/cod_radio_button"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Cash on Delivery"-->
-<!--                        android:textColor="@color/gray"/>-->
-
-<!--                    <RadioButton-->
-<!--                        android:buttonTint="@color/gray"-->
-
-<!--                        android:textColor="@color/gray"-->
-<!--                        android:id="@+id/wallet_radio_button"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Mobile Wallet" />-->
+            </LinearLayout>
 
 
-<!--                </RadioGroup>-->
-                <!-- Payment Type ID -->
-                <RadioGroup
-                    android:id="@+id/payment_type_radio_group"
-                    android:layout_width="match_parent"
-                    android:layout_below="@id/tvPaymentMeth"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/scrollView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Linear"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rounded_square"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
 
-
-                    <RadioButton
-                        android:id="@+id/prepaid_radio_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Prepaid" />
-
-                    <RadioButton
-                        android:id="@+id/wallet_radio_button"
-
-                        android:text="Mobile Wallet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/gray"
-                  />
-
-                    <RadioButton
-                        android:buttonTint="@color/gray"
-                        android:id="@+id/cod_radio_button"
-                        android:text="Cash on Delivery"
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/tv_compartment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="10dp"
-                        android:text="Compartment Number"
-                        android:visibility="gone"
-                        android:textColor="@color/gray"></TextView>
-
-                </RadioGroup>
-
-
-                <EditText
-                    android:backgroundTint="@color/gray"
-
-                    android:id="@+id/order_id_edittext"
+                <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tracking_id_edittext"
-                    android:layout_marginTop="20dp"
-                    android:hint="Order ID"
-                    android:inputType="text"
-                    android:maxLength="10"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textColorHint="@color/gray" />
+                    android:layout_below="@id/Linear"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
+                    android:fitsSystemWindows="true"
+                    android:isScrollContainer="false"
 
-                <RadioGroup
-                    android:id="@+id/payment_comp_radiogroup"
-                    android:layout_width="match_parent"
-                    android:layout_below="@id/payment_type_radio_group"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                    tools:ignore="NotSibling">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="50dp">
+                        <!-- Parcel ID -->
+                        <EditText
+                            android:id="@+id/product_name_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/gray"
+                            android:hint="Product Name"
+                            android:inputType="text"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+                        <!-- Tracking ID -->
+                        <!-- Order Total -->
+                        <EditText
+                            android:id="@+id/tracking_id_edittext"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/product_name_edittext"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="0dp"
+                            android:backgroundTint="@color/gray"
+                            android:hint="Tracking ID"
+                            android:inputType="text"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+
+                        <EditText
+                            android:id="@+id/order_total_edittext"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/order_id_edittext"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/gray"
+                            android:hint="Order Total"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+
+                        <TextView
+                            android:id="@+id/tvPaymentMeth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/order_total_edittext"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Payment Method"
+                            android:textColor="@color/gray"></TextView>
+                        <!-- Payment Type ID -->
+                        <!--                <RadioGroup-->
+                        <!--                    android:id="@+id/payment_type_radio_group"-->
+                        <!--                    android:layout_width="match_parent"-->
+                        <!--                    android:layout_height="wrap_content"-->
+                        <!--                    android:layout_below="@id/tvPaymentMeth"-->
+                        <!--                    android:orientation="vertical"-->
+                        <!--                    android:layout_marginTop="10dp"-->
+                        <!--                    >-->
 
 
-                <RadioButton
-                    android:id="@+id/comp1_radio_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1" />
-                <RadioButton
-                    android:id="@+id/comp2_radio_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2"
-                    />
+                        <!--                    <RadioButton-->
+                        <!--                        android:id="@+id/prepaid_radio_button"-->
+                        <!--                        android:buttonTint="@color/gray"-->
+                        <!--                        android:textColor="@color/gray"-->
+                        <!--                        android:layout_width="wrap_content"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:text="Prepaid"-->
+                        <!--                        />-->
 
-                </RadioGroup>
+                        <!--                    <RadioButton-->
+                        <!--                        android:buttonTint="@color/gray"-->
 
-            </RelativeLayout>
+                        <!--                        android:id="@+id/cod_radio_button"-->
+                        <!--                        android:layout_width="wrap_content"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:text="Cash on Delivery"-->
+                        <!--                        android:textColor="@color/gray"/>-->
 
-        </ScrollView>
-    </androidx.cardview.widget.CardView>
+                        <!--                    <RadioButton-->
+                        <!--                        android:buttonTint="@color/gray"-->
 
-    <Button
-        android:id="@+id/btnUpdateParcel"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
+                        <!--                        android:textColor="@color/gray"-->
+                        <!--                        android:id="@+id/wallet_radio_button"-->
+                        <!--                        android:layout_width="wrap_content"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:text="Mobile Wallet" />-->
 
 
-        android:layout_below="@+id/scrollView"
-        android:layout_alignParentStart="true"                android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/roundedlist"
-        android:backgroundTint="@color/lightmidgreen"
+                        <!--                </RadioGroup>-->
+                        <!-- Payment Type ID -->
+                        <RadioGroup
+                            android:id="@+id/payment_type_radio_group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvPaymentMeth"
+                            android:orientation="vertical">
 
-        android:text="Update Parcel"
-        android:textColor="@color/white">
 
-    </Button>
-</LinearLayout>
+                            <RadioButton
+                                android:id="@+id/prepaid_radio_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Prepaid" />
+
+                            <RadioButton
+                                android:id="@+id/wallet_radio_button"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@color/gray"
+                                android:text="Mobile Wallet" />
+
+                            <RadioButton
+                                android:id="@+id/cod_radio_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:buttonTint="@color/gray"
+                                android:text="Cash on Delivery" />
+
+                            <TextView
+                                android:id="@+id/tv_compartment"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Compartment Number"
+                                android:textColor="@color/gray"
+                                android:visibility="gone"></TextView>
+
+                        </RadioGroup>
+
+
+                        <EditText
+                            android:id="@+id/order_id_edittext"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tracking_id_edittext"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/gray"
+                            android:hint="Order ID"
+                            android:inputType="text"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textColorHint="@color/gray" />
+
+                        <RadioGroup
+                            android:id="@+id/payment_comp_radiogroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/payment_type_radio_group"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+
+                            <RadioButton
+                                android:id="@+id/comp1_radio_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1" />
+
+                            <RadioButton
+                                android:id="@+id/comp2_radio_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="2" />
+
+                            <RadioButton
+                                android:id="@+id/comp3_radio_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@color/gray"
+                                android:text="3"
+                                android:visibility="visible" />
+
+                            <RadioButton
+                                android:id="@+id/comp4_radio_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4"
+                                android:visibility="visible" />
+
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                </ScrollView>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btnUpdateParcel"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+
+
+                android:layout_below="@+id/scrollView"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/roundedlist"
+                android:backgroundTint="@color/lightmidgreen"
+
+                android:text="Update Parcel"
+                android:textColor="@color/white">
+
+            </Button>
+        </LinearLayout>
     </ScrollView>
 </RelativeLayout>

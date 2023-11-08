@@ -236,16 +236,27 @@ android:layout_marginBottom="5dp"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/gray"
                         android:text="1"
-                        android:textColor="@color/gray"
                         android:visibility="visible" />
 
                     <RadioButton
                         android:id="@+id/comp2_radio_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/gray"
                         android:text="2"
-                        android:textColor="@color/gray"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/comp3_radio_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/gray"
+                        android:text="3"
+                        android:visibility="visible" />
+                    <RadioButton
+                        android:id="@+id/comp4_radio_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4"
                         android:visibility="visible" />
 
                 </RadioGroup>
