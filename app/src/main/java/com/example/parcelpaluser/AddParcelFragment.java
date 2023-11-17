@@ -55,7 +55,7 @@ public class AddParcelFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     EditText etTrackingId, etOrderTotal, etProductName, etOrderId;
     RadioGroup etPaymentType, paymentComp;
-    RadioButton paymentRadioBT, paymentCompBT, comp1, comp2, comp3, comp4;
+    RadioButton paymentRadioBT, cod, paymentCompBT, comp1, comp2, comp3, comp4;
     TextView paymentCompTv;
     Button btnAddParcel;
     int selectedPayment, selectedPaymentComp;
@@ -116,6 +116,7 @@ public class AddParcelFragment extends Fragment {
         btnAddParcel = view.findViewById(R.id.btnAddParcel);
         comp1 = view.findViewById(R.id.comp1_radio_button);
         comp2 = view.findViewById(R.id.comp2_radio_button);
+        cod = view.findViewById(R.id.cod_radio_button);
         comp3 = view.findViewById(R.id.comp3_radio_button);
         comp4 = view.findViewById(R.id.comp4_radio_button);
         etProductName = view.findViewById(R.id.product_name_edittext);
@@ -227,8 +228,7 @@ public class AddParcelFragment extends Fragment {
                     return;
                 }
 
-                addParcel();
-
+                checkTrackingId();
 
             }
         });
@@ -300,6 +300,8 @@ public class AddParcelFragment extends Fragment {
                             comp3.setEnabled(false);
                             comp4.setEnabled(false);
                         } else if (response.equals("disable 1,disable 2,disable 3,disable 4")) {
+                            Toast.makeText(getActivity(), "Cash on Delivery Compartments Full", Toast.LENGTH_SHORT).show();
+                            cod.setEnabled(false);
                             comp1.setEnabled(false);
                             comp2.setEnabled(false);
                             comp3.setEnabled(false);
@@ -337,7 +339,7 @@ public class AddParcelFragment extends Fragment {
                             Toast.makeText(getActivity(), "Parcel Already Exists", Toast.LENGTH_SHORT).show();
                         } else {
 
-                            checkTrackingId();
+                        addParcel();
                         }
                     }
                 },
