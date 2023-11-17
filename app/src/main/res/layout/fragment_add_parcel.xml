@@ -115,10 +115,10 @@
 
 
                     android:hint="Tracking ID"
-                    android:inputType="text"
                     android:maxLength="50"
                     android:maxLines="1"
-
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890-*_"
+                    android:inputType="textFilter"
                     android:textColor="@color/black"
                     />
 
@@ -234,8 +234,9 @@ android:layout_marginBottom="5dp"
                         android:id="@+id/comp1_radio_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/gray"
+                        android:textColor="@color/gray"
                         android:text="1"
+
                         android:visibility="visible" />
 
                     <RadioButton
@@ -243,6 +244,8 @@ android:layout_marginBottom="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2"
+                        android:textColor="@color/gray"
+
                         android:visibility="visible" />
 
                     <RadioButton
@@ -251,12 +254,16 @@ android:layout_marginBottom="5dp"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/gray"
                         android:text="3"
+                        android:textColor="@color/gray"
+
                         android:visibility="visible" />
                     <RadioButton
                         android:id="@+id/comp4_radio_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4"
+                        android:textColor="@color/gray"
+
                         android:visibility="visible" />
 
                 </RadioGroup>

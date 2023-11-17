@@ -55,7 +55,7 @@ public class AddParcelFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     EditText etTrackingId, etOrderTotal, etProductName, etOrderId;
     RadioGroup etPaymentType, paymentComp;
-    RadioButton paymentRadioBT, paymentCompBT, comp1,comp2,comp3,comp4;
+    RadioButton paymentRadioBT, paymentCompBT, comp1, comp2, comp3, comp4;
     TextView paymentCompTv;
     Button btnAddParcel;
     int selectedPayment, selectedPaymentComp;
@@ -114,10 +114,10 @@ public class AddParcelFragment extends Fragment {
         etOrderTotal = view.findViewById(R.id.order_total_edittext);
         etPaymentType = view.findViewById(R.id.payment_type_radio_group);
         btnAddParcel = view.findViewById(R.id.btnAddParcel);
-        comp1 =view.findViewById(R.id.comp1_radio_button);
-        comp2 =view.findViewById(R.id.comp2_radio_button);
-        comp3 =view.findViewById(R.id.comp3_radio_button);
-        comp4 =view.findViewById(R.id.comp4_radio_button);
+        comp1 = view.findViewById(R.id.comp1_radio_button);
+        comp2 = view.findViewById(R.id.comp2_radio_button);
+        comp3 = view.findViewById(R.id.comp3_radio_button);
+        comp4 = view.findViewById(R.id.comp4_radio_button);
         etProductName = view.findViewById(R.id.product_name_edittext);
         etOrderId = view.findViewById(R.id.order_id_edittext);
         selectedPayment = etPaymentType.getCheckedRadioButtonId();
@@ -251,6 +251,7 @@ public class AddParcelFragment extends Fragment {
         }
 
     };
+
     private void checkCompartmentExisting() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://script.google.com/macros/s/AKfycbxe60Ea0TWyGRRig0LemVXLYN_KWBV_QJ6gPZyfiXIIJXsrDLPOqQHk2up0B2Nv_DIu/exec?action=checkExistingComp",
                 new Response.Listener<String>() {
@@ -303,12 +304,40 @@ public class AddParcelFragment extends Fragment {
                             comp2.setEnabled(false);
                             comp3.setEnabled(false);
                             comp4.setEnabled(false);
-                        }
-                        else{
+                        } else {
                             comp1.setEnabled(true);
                             comp2.setEnabled(true);
                             comp3.setEnabled(true);
                             comp4.setEnabled(true);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle error response
+                    }
+                }
+        );
+
+        int socketTimeOut = 50000;
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        RequestQueue queue = Volley.newRequestQueue(requireContext());
+        queue.add(stringRequest);
+    }
+
+    private void checkTrackingId() {
+        String url = String.format("https://script.google.com/macros/s/AKfycbzS6mC6fmT2gHEckCTsTQ0Tqn5QXe9luie5DzcLFznywttNoimFP4Kgn4Zg8loaG8DD/exec?action=checkParcelExists&trackingid=%s", etTrackingId.getText().toString());
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equals("true")) {
+                            Toast.makeText(getActivity(), "Parcel Already Exists", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            checkTrackingId();
                         }
                     }
                 },
