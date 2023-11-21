@@ -128,6 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/gray"
+            android:textColor="@color/gray"
             android:drawableLeft="@drawable/ic_outline_email_24"
             android:enabled="false"
 
@@ -139,6 +140,7 @@
         <EditText
             android:enabled="false"
             android:id="@+id/etPhone"
+            android:textColor="@color/gray"
             android:layout_width="match_parent"
             android:textColorHint="@color/gray"
             android:layout_height="wrap_content"
@@ -154,6 +156,7 @@
             android:textColorHint="@color/gray"
             android:layout_height="wrap_content"
             android:enabled="false"
+            android:textColor="@color/gray"
             android:inputType="textPassword"
             android:drawableLeft="@drawable/ic_baseline_password_24"
             android:drawablePadding="10dp"
@@ -166,6 +169,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
+
             android:layout_marginTop="20dp"
             android:background="@drawable/roundedlist"
             android:backgroundTint="@color/lightmidgreen"
