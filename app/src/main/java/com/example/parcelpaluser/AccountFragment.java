@@ -298,7 +298,7 @@ public class AccountFragment extends Fragment {
         loading.dismiss();
         user.setText(userEmail);
         phone.setText(userPass);
-        pass.setText(userPass);
+        pass.setText(userPhone);
         fullEmail.setText(userEmail);
 
 
