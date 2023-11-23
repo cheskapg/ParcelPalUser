@@ -204,7 +204,7 @@ public class ViewParcelListItem extends AppCompatActivity {
                     public void onClick(DialogInterface dialog,
                                         int which) {
                         //DELETE FROM DB BUT FOR TESTING WE COMMENT IT OUT
-//                        deleteItemFromDatabase(getParcel);
+                        deleteItemFromDatabase(getParcel);
                         Toast.makeText(context, "YOU Deleted  " + getParcel + " - " + productName, Toast.LENGTH_SHORT).show();
 
                         dialog.dismiss();

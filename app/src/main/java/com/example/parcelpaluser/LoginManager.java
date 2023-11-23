@@ -8,6 +8,7 @@ public class LoginManager {
     private static final String IS_LOGGED_IN = "isLoggedIn";
     private static final String USER_EMAIL = "userEmail";
     private static final String FCM_TOKEN = "fcmToken";
+    private static final String USER_ID = "userId";
 
     public static void saveLoginState(Context context, boolean isLoggedIn) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(LOGIN_PREFS, Context.MODE_PRIVATE);
@@ -50,4 +51,16 @@ public class LoginManager {
         editor.remove(FCM_TOKEN);
         editor.apply();
     }
+    public static void saveUserId(Context context, String userid) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(LOGIN_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(USER_ID, userid);
+        editor.apply();
+    }
+
+    public static String getUserId(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(LOGIN_PREFS, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(USER_ID, "");
+    }
+
 }

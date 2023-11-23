@@ -59,7 +59,9 @@ public class AddParcelFragment extends Fragment {
     TextView paymentCompTv;
     Button btnAddParcel;
     int selectedPayment, selectedPaymentComp;
-    String paymentCompText, userId;
+    String paymentCompText;
+    String userId;
+    String userIdfromPrefs;
     boolean updatepaymentchosen;
 
     // TODO: Rename and change types of parameters
@@ -244,6 +246,10 @@ public class AddParcelFragment extends Fragment {
 
                 String receivedString = intent.getStringExtra("userId");
                 userId = receivedString;
+                LoginManager.saveUserId(requireContext(),receivedString);
+
+                Log.d("BroadcastReceiver", "Received userId: " + userId);
+
                 // Handle the received string
             }
             Toast.makeText(getContext(), "getUserId : add parcel frag " + userId, Toast.LENGTH_SHORT).show();
@@ -368,7 +374,7 @@ public class AddParcelFragment extends Fragment {
         selectedPaymentComp = paymentComp.getCheckedRadioButtonId();
         paymentCompBT = (RadioButton) getView().findViewById(selectedPaymentComp);
         String paymentType_id = paymentRadioBT.getText().toString();
-
+        userIdfromPrefs = LoginManager.getUserId(requireContext());
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://script.google.com/macros/s/AKfycbycoJM-I4YdT2oMwlI8ZZY8a9HkqrH1N36Aux_Zqcc6MqG6dPnLiL00QODfjk_ESfEK/exec", new Response.Listener<String>() {
             @Override
@@ -393,7 +399,7 @@ public class AddParcelFragment extends Fragment {
                 Map<String, String> params = new HashMap<>();
                 params.put("action", "addParcelItemOnly");
                 params.put("tracking_id", tracking_id);
-                params.put("user_id", userId);
+                params.put("user_id", userIdfromPrefs);
 
                 params.put("orderTotal", orderTotal);
                 params.put("paymentType_id", paymentType_id);
@@ -426,6 +432,6 @@ public class AddParcelFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-//        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(broadcastReceiver);
+        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(broadcastReceiver);
     }
 }
