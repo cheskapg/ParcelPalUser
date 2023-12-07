@@ -1,5 +1,6 @@
 package com.example.parcelpaluser;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
@@ -48,7 +50,11 @@ import android.content.Context;
  * create an instance of this fragment.
  */
 public class AddParcelFragment extends Fragment {
-
+    Activity activity;
+    @Override    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        activity = (Activity) context;
+    }
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,7 +67,11 @@ public class AddParcelFragment extends Fragment {
     int selectedPayment, selectedPaymentComp;
     String paymentCompText;
     String userId;
+    ProgressDialog loading;
+
     String userIdfromPrefs;
+
+
     boolean updatepaymentchosen;
 
     // TODO: Rename and change types of parameters
@@ -89,6 +99,7 @@ public class AddParcelFragment extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
+
         return fragment;
 
     }
@@ -229,6 +240,7 @@ public class AddParcelFragment extends Fragment {
                     Toast.makeText(getActivity(), "Please select a payment compartment", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                loading = ProgressDialog.show(activity, "Adding Parcel", "please wait", false, false);
 
                 checkTrackingId();
 
@@ -252,7 +264,6 @@ public class AddParcelFragment extends Fragment {
 
                 // Handle the received string
             }
-            Toast.makeText(getContext(), "getUserId : add parcel frag " + userId, Toast.LENGTH_SHORT).show();
             Log.d("Parcel", "getUserId : add parcel frag " + userId);
         }
 
@@ -380,7 +391,8 @@ public class AddParcelFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 // Notify the parent activity or fragment to replace the current fragment
-
+                Toast.makeText(getContext(), "Added Parcel", Toast.LENGTH_SHORT).show();
+                loading.dismiss();
                 if (getParentFragment() != null) {
                     ((UserMainHome) getActivity()).replaceCurrentFragment(new ParcelListFragment(), true);
                 } else if (getActivity() != null) {

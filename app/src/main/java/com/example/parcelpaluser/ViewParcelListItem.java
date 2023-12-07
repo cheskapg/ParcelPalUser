@@ -267,9 +267,9 @@ public class ViewParcelListItem extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        getPaymentImageUrl();
 
                         parseItems(response, getParcel);
+                        getPaymentImageUrl();
 
 
                     }

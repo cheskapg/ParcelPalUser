@@ -290,8 +290,8 @@ public class PayMobileWallet extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         parseItems(response);
-                        Toast myToast = Toast.makeText(PayMobileWallet.this, response, Toast.LENGTH_LONG);
-                        myToast.show();
+//                        Toast myToast = Toast.makeText(PayMobileWallet.this, response, Toast.LENGTH_LONG);
+//                        myToast.show();
 
                     }
 

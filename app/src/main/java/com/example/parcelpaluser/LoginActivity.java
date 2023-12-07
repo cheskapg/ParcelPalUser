@@ -269,13 +269,13 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                Toast.makeText(LoginActivity.this, fcmToken,Toast.LENGTH_LONG).show();
+//                Toast.makeText(LoginActivity.this, fcmToken,Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(LoginActivity.this,"NO INSERT"+ fcmToken,Toast.LENGTH_LONG).show();
+//                Toast.makeText(LoginActivity.this,"No Token"+ fcmToken,Toast.LENGTH_LONG).show();
 
             }
         }){
@@ -304,9 +304,9 @@ public class LoginActivity extends AppCompatActivity {
                     fcmToken = getToken;
                     insertUserToken();
                     LoginManager.saveFCMToken(LoginActivity.this, fcmToken);
-                    Toast.makeText(getApplicationContext(), "Login Token Success " + fcmToken, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "Login Token Success " + fcmToken, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Token GET FAILED", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "Token GET FAILED", Toast.LENGTH_SHORT).show();
                     // Retry after a delay
                     new Handler().postDelayed(new Runnable() {
                         @Override

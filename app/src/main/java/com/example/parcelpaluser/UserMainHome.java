@@ -49,13 +49,13 @@ public class UserMainHome extends AppCompatActivity {
         getUserIDbyEmail();
 
         replaceFragment(new AddParcelFragment(), loggedInUserEmail);
-        Toast myToast = Toast.makeText(this, "User: " + loggedInUserEmail + " has logged In", Toast.LENGTH_LONG);
+        Toast myToast = Toast.makeText(this,  loggedInUserEmail + " has logged In", Toast.LENGTH_LONG);
         myToast.show();
 
 
         String token = LoginManager.getFCMToken(this);
-        Toast toast = Toast.makeText(this, "TOKEN " + token, Toast.LENGTH_LONG);
-        toast.show();
+//        Toast toast = Toast.makeText(this, "TOKEN " + token, Toast.LENGTH_LONG);
+//        toast.show();
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.addParcelMenu:
@@ -193,7 +193,7 @@ public class UserMainHome extends AppCompatActivity {
                         Intent intent = new Intent("getUserId");
                         intent.putExtra("userId", userIdString);
                         LocalBroadcastManager.getInstance(UserMainHome.this).sendBroadcast(intent);
-                        Toast.makeText(getApplicationContext(),"userId" +userId, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),userId, Toast.LENGTH_SHORT).show();
 
 
                     }//Use the file URL as needed

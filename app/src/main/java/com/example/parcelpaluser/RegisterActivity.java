@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -22,8 +23,9 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText etEmail, etPass,etPhone;
+    EditText etEmail, etPass, etPhone;
     Button btnLogin, btnReg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-    public void addUserData(){
+
+    public void addUserData() {
         String uEmail = etEmail.getText().toString();
         String uPhone = etPhone.getText().toString();
         String uPass = etPass.getText().toString();
@@ -49,25 +52,27 @@ public class RegisterActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
+                Toast.makeText(RegisterActivity.this, "User Registered. Please Log In", Toast.LENGTH_LONG).show();
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
             }
-        }){
+        }) {
             @Override
-            protected Map<String, String> getParams(){
-                Map<String,String> params = new HashMap<>();
-                params.put("action","registerUser");
-                params.put("email",uEmail);
-                params.put("pass",uPass);
-                params.put("phone",uPhone);
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("action", "registerUser");
+                params.put("email", uEmail);
+                params.put("pass", uPass);
+                params.put("phone", uPhone);
 
                 return params;
             }
         };
         int socketTimeOut = 50000;
-        RetryPolicy retryPolicy = new DefaultRetryPolicy(socketTimeOut,0,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        RetryPolicy retryPolicy = new DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(retryPolicy);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
