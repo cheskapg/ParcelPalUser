@@ -195,7 +195,7 @@ public class PayMobileWallet extends AppCompatActivity {
         Intent intent = getIntent();
         getParcel = intent.getStringExtra("parcelid");
         Toast myToast = Toast.makeText(PayMobileWallet.this, getParcel, Toast.LENGTH_LONG);
-        myToast.show();
+//        myToast.show();
 
 
     }
@@ -237,7 +237,7 @@ public class PayMobileWallet extends AppCompatActivity {
 
 
         // Show the progress dialog here
-        showProgressDialog();
+
 
 
     }
@@ -261,7 +261,7 @@ public class PayMobileWallet extends AppCompatActivity {
         if (selectedImage != null) {
             // Convert the bitmap to a base64-encoded string
             String encodedImage = getStringImage(selectedImage);
-
+            showProgressDialog();
             // Call the method to update the Google Sheets
             updateGoogleSheets(encodedImage);
         }
@@ -313,42 +313,6 @@ public class PayMobileWallet extends AppCompatActivity {
 
 
     }
-    //parse the response from the string query
-
-    //pass string id parameter
-//    private void parseItems(String jsonResponse) {
-//        try {
-//            JSONObject jobj = new JSONObject(jsonResponse);
-//            JSONArray jarray = jobj.getJSONArray("items");
-//
-//            // Iterate over the items array
-//            for (int i = 0; i < jarray.length(); i++) {
-//                JSONObject jo = jarray.getJSONObject(i);
-//
-//                    trackingId = jo.getString("tracking_id");
-//                    orderTotal = jo.getString("orderTotal");
-//                    paymentType = jo.getString("paymentType_id");
-//                    productName = jo.getString("productName");
-//
-//                    break; // Exit the loop after finding the matching item
-//
-//
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//
-//        }
-//
-//
-//        product_name_edittext.setText(productName);
-//        tracking_id_edittext.setText(trackingId);
-//        order_total_edittext.setText(orderTotal);
-//        walletType_et.setText(paymentType);
-//
-//        loading.dismiss();
-//
-//
-//    }
     private void parseItems(String jsonResponse) {
         try {
             JSONObject jobj = new JSONObject(jsonResponse);
@@ -394,6 +358,43 @@ public class PayMobileWallet extends AppCompatActivity {
 
     }
 }
+    //parse the response from the string query
+
+    //pass string id parameter
+//    private void parseItems(String jsonResponse) {
+//        try {
+//            JSONObject jobj = new JSONObject(jsonResponse);
+//            JSONArray jarray = jobj.getJSONArray("items");
+//
+//            // Iterate over the items array
+//            for (int i = 0; i < jarray.length(); i++) {
+//                JSONObject jo = jarray.getJSONObject(i);
+//
+//                    trackingId = jo.getString("tracking_id");
+//                    orderTotal = jo.getString("orderTotal");
+//                    paymentType = jo.getString("paymentType_id");
+//                    productName = jo.getString("productName");
+//
+//                    break; // Exit the loop after finding the matching item
+//
+//
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//
+//        }
+//
+//
+//        product_name_edittext.setText(productName);
+//        tracking_id_edittext.setText(trackingId);
+//        order_total_edittext.setText(orderTotal);
+//        walletType_et.setText(paymentType);
+//
+//        loading.dismiss();
+//
+//
+//    }
+
 //    private void updateGoogleSheets(String imageBlob) {
 //        // Call the Google Apps Script function to update the Google Sheets
 //        String url = "https://script.google.com/macros/s/AKfycbwwVjxJvO7CjUsrIErl7iQ6k1FfHswiOZ2Hf9fkUQNqtVvVyGvHiavRsXmb3yL0lw2X/exec?action=addProofPaymentImage";

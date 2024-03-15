@@ -78,7 +78,7 @@ public class ViewParcelListItem extends AppCompatActivity {
         tvDateReceived = findViewById(R.id.textView_DateReceived);
         viewMenu = findViewById(R.id.viewMenu);
         Toast myToast = Toast.makeText(ViewParcelListItem.this, "Test", Toast.LENGTH_LONG);
-        myToast.show();
+//        myToast.show();
         getParcelIntent();
 
 
@@ -135,8 +135,8 @@ public class ViewParcelListItem extends AppCompatActivity {
                     public void onResponse(String response) {
                         // Handle the response (file URL)
                          fileUrl = response;
-                        Toast.makeText(getApplicationContext(),"file" +url, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(),getTracking(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(),"file" +url, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(),getTracking(), Toast.LENGTH_SHORT).show();
                         if(paymentType.equals("Mobile Wallet")) {
 
                             if (tvDeliveryStatus.getText().toString().equals("Attempting delivery") && fileUrl == null) {
@@ -344,7 +344,7 @@ public class ViewParcelListItem extends AppCompatActivity {
         tvDeliveryStatus.setText(deliveryStatus);
         tvDateReceived.setText(dateReceived);
 //        getTracking = trackingId;
-
+//
 //        if(paymentType.equals("Mobile Wallet")) {
 //            btnPayMobile.setVisibility(View.VISIBLE);
 //            if (fileUrl == null && tvDeliveryStatus.getText().toString().equals("pending") ){
@@ -384,8 +384,8 @@ public class ViewParcelListItem extends AppCompatActivity {
 //            btnPayMobile.setVisibility(View.GONE);
 //
 //        }
-
-
+//
+//
 
 
     }
